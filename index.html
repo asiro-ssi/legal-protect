@@ -1,1 +1,826 @@
-a
+<title>legal-protect | ASiRO — トラブルのない世界をつくる</title>
+<style>
+  :root {
+    --ink:    #0C1828;
+    --brand:  #1763B0;
+    --teal:   #0E9B94;
+    --indigo: #2D8AB5;
+    --slate:  #5B7FA6;
+    --ground: #F5F7FA;
+    --mist:   #E0EAF4;
+    --rule:   #C8D6E8;
+    --body:   #344455;
+    --dim:    #7A8FA8;
+    --white:  #FFFFFF;
+
+    --mincho: "Hiragino Mincho ProN", "Yu Mincho", "BIZ UDMincho Medium", Georgia, serif;
+    --gothic: "Hiragino Kaku Gothic ProN", "Yu Gothic", "BIZ UDGothic", system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--body);
+    font-family: var(--gothic);
+    font-size: 1rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Nav ─────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(245,247,250,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .nav-brand .co {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .nav-brand .prod {
+    font-family: var(--mincho);
+    font-size: 1.05rem;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--body);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.18s;
+  }
+  .nav-links a:hover { color: var(--brand); }
+
+  .nav-cta {
+    background: var(--brand) !important;
+    color: var(--white) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 2px;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.06em;
+  }
+  .nav-cta:hover { background: #0F4E8A !important; }
+
+  /* ─── Hero ────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 8rem 3rem 5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--brand);
+  }
+
+  h1 {
+    font-family: var(--mincho);
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    line-height: 1.22;
+    color: var(--ink);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--brand);
+  }
+
+  .hero-sub {
+    font-size: 0.975rem;
+    line-height: 2;
+    color: var(--body);
+    max-width: 36ch;
+    border-left: 2px solid var(--mist);
+    padding-left: 1.2rem;
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+  }
+
+  /* ─── Diagram ─────────────────────────────────────── */
+  .diagram-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diagram {
+    position: relative;
+    width: 440px;
+    height: 440px;
+    flex-shrink: 0;
+  }
+
+  /* Cross lines */
+  .diagram-h,
+  .diagram-v {
+    position: absolute;
+    background: var(--rule);
+    pointer-events: none;
+  }
+  .diagram-h {
+    width: 100%; height: 1px;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    border-style: dashed;
+    border: none;
+    background: repeating-linear-gradient(90deg, var(--rule) 0, var(--rule) 6px, transparent 6px, transparent 12px);
+  }
+  .diagram-v {
+    width: 1px; height: 100%;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(180deg, var(--rule) 0, var(--rule) 6px, transparent 6px, transparent 12px);
+  }
+
+  /* Outer orbit */
+  .diagram-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 310px; height: 310px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: rgba(224,234,244,0.25);
+  }
+
+  /* Center globe */
+  .diagram-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 154px; height: 154px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--teal) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 10px 40px rgba(23,99,176,0.28);
+  }
+  .center-en {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    opacity: 0.82;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .center-ja {
+    font-family: var(--mincho);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+  }
+
+  /* Nodes */
+  .node {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    z-index: 3;
+  }
+  .node-badge {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--brand);
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+  }
+  .node-badge.teal { background: var(--teal); }
+  .node-badge.indigo { background: var(--indigo); }
+  .node-badge.slate { background: var(--slate); }
+
+  .node-name {
+    font-family: var(--mincho);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .node-top    { top: 22px;  left: 50%; transform: translateX(-50%); }
+  .node-bottom { bottom: 22px; left: 50%; transform: translateX(-50%); }
+  .node-right  { top: 50%; right: 14px; transform: translateY(-50%); align-items: flex-end; }
+  .node-left   { top: 50%; left: 14px;  transform: translateY(-50%); align-items: flex-start; }
+
+  /* ─── Products ────────────────────────────────────── */
+  .products {
+    padding: 7rem 3rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 3rem;
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .section-eyebrow::before {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--brand);
+  }
+  .section-title {
+    font-family: var(--mincho);
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    color: var(--ink);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* ─── Cards ───────────────────────────────────────── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--brand);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover {
+    border-color: var(--brand);
+    box-shadow: 0 4px 24px rgba(23,99,176,0.08);
+  }
+  .card:hover::after { opacity: 1; }
+
+  .card.c-teal:hover { border-color: var(--teal); box-shadow: 0 4px 24px rgba(14,155,148,0.08); }
+  .card.c-teal::after { background: var(--teal); }
+
+  .card.c-indigo:hover { border-color: var(--indigo); }
+  .card.c-indigo::after { background: var(--indigo); }
+
+  .card.c-slate:hover { border-color: var(--slate); box-shadow: 0 4px 24px rgba(91,127,166,0.08); }
+  .card.c-slate::after { background: var(--slate); }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--brand);
+    text-transform: uppercase;
+  }
+  .card-badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  .c-teal  .card-badge { color: var(--teal); }
+  .c-indigo .card-badge { color: var(--indigo); }
+  .c-slate .card-badge { color: var(--slate); }
+
+  .card-title {
+    font-family: var(--mincho);
+    font-size: 1.45rem;
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .card-sub {
+    font-size: 0.78rem;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+    margin-top: -0.4rem;
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    line-height: 1.85;
+    color: var(--body);
+    border-top: 1px solid var(--mist);
+    padding-top: 1rem;
+    margin-top: 0.15rem;
+  }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+    transition: gap 0.18s;
+  }
+  .card-link:hover { gap: 0.6rem; }
+  .card-link::after { content: "→"; }
+  .c-teal  .card-link { color: var(--teal); }
+  .c-indigo .card-link { color: var(--indigo); }
+  .c-slate .card-link { color: var(--slate); }
+
+  /* Wide 2-col card */
+  .card-wide {
+    grid-column: span 2;
+  }
+  .card-wide-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .card-wide-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .card-wide-aside {
+    border-left: 1px solid var(--mist);
+    padding-left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-top: 0.25rem;
+  }
+  .aside-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--mist);
+  }
+  .aside-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .aside-label {
+    font-size: 0.67rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .aside-name {
+    font-family: var(--mincho);
+    font-size: 1.05rem;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .aside-desc {
+    font-size: 0.825rem;
+    color: var(--body);
+    line-height: 1.75;
+  }
+
+  /* bonobno - insurance row */
+  .card-insurance-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .insurance-right {
+    border-left: 1px solid var(--mist);
+    padding-left: 2.5rem;
+  }
+  .insurance-note {
+    font-size: 0.825rem;
+    color: var(--dim);
+    line-height: 1.85;
+  }
+  .insurance-note strong { color: var(--body); }
+
+  /* ─── Vision ──────────────────────────────────────── */
+  .vision {
+    background: var(--ink);
+    padding: 7rem 3rem;
+    margin-top: 3rem;
+  }
+  .vision-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+  }
+
+  .vision-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .vision-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .vision-eyebrow::before {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--teal);
+  }
+  .vision-headline {
+    font-family: var(--mincho);
+    font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+    color: var(--white);
+    line-height: 1.45;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .vision-body {
+    font-size: 0.9rem;
+    line-height: 2.05;
+    color: #8BA0B8;
+  }
+
+  .vision-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .stat {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .stat:first-child { padding-top: 0; }
+  .stat:last-child { border-bottom: none; }
+  .stat-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 700;
+  }
+  .stat-value {
+    font-family: var(--mincho);
+    font-size: 1.55rem;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .stat-note {
+    font-size: 0.78rem;
+    color: #5B7FA6;
+    line-height: 1.6;
+  }
+
+  /* ─── Footer ──────────────────────────────────────── */
+  footer {
+    background: #060F1A;
+    padding: 2.25rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-brand {
+    font-family: var(--mincho);
+    color: rgba(255,255,255,0.45);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+  .footer-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.28);
+    line-height: 1.8;
+    text-align: center;
+  }
+  .footer-copy {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ─── Responsive ──────────────────────────────────── */
+  @media (max-width: 920px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 6rem 1.5rem 3rem;
+      min-height: auto;
+      gap: 2.5rem;
+    }
+    .diagram-wrap { display: none; }
+
+    .products { padding: 4.5rem 1.5rem; }
+    .grid { grid-template-columns: 1fr; }
+    .card-wide { grid-column: span 1; }
+    .card-wide-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .card-wide-aside {
+      border-left: none;
+      border-top: 1px solid var(--mist);
+      padding-left: 0;
+      padding-top: 1.5rem;
+    }
+    .card-insurance-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .insurance-right {
+      border-left: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-left: 0;
+      padding-top: 1.5rem;
+    }
+
+    .vision { padding: 4.5rem 1.5rem; }
+    .vision-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    footer { padding: 2rem 1.5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer-note { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-brand">
+    <span class="co">ASiRO Inc.</span>
+    <span class="prod">legal-protect</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#products">サービス</a></li>
+    <li><a href="#vision">ビジョン</a></li>
+    <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <span class="eyebrow">Who we are</span>
+    <h1>トラブルのない<br><em>世界をつくる</em></h1>
+    <p class="hero-sub">
+      法の不安から解放された世界を、<br>
+      サブスク法務とともにつくっていく。<br>
+      法人・個人・店舗・保険——<br>
+      あらゆる「もしも」に備える、<br>
+      トータル・リーガル・プロテクション。
+    </p>
+    <p class="hero-tag">ASiRO Inc. — legal-protect division</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram" role="img" aria-label="legal-protect サービスエコシステム図">
+      <div class="diagram-h"></div>
+      <div class="diagram-v"></div>
+      <div class="diagram-ring"></div>
+      <div class="diagram-center">
+        <span class="center-en">Trouble-free</span>
+        <span class="center-ja">World</span>
+      </div>
+
+      <div class="node node-top">
+        <span class="node-badge">法人向け</span>
+        <span class="node-name">LegalBase</span>
+      </div>
+      <div class="node node-right">
+        <span class="node-badge teal">店舗向け</span>
+        <span class="node-name">LegalBaseビューティー<br>LegalBaseグルメ</span>
+      </div>
+      <div class="node node-bottom">
+        <span class="node-badge indigo">個人向け</span>
+        <span class="node-name">ベンナビcrown</span>
+      </div>
+      <div class="node node-left">
+        <span class="node-badge slate">保険</span>
+        <span class="node-name">bonobno</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Products ── -->
+<section class="products" id="products">
+  <div class="section-head">
+    <span class="section-eyebrow">Our Services</span>
+    <h2 class="section-title">サブスクで、法務をもっと身近に</h2>
+  </div>
+
+  <div class="grid">
+
+    <!-- LegalBase (法人) -->
+    <div class="card">
+      <span class="card-badge"><span class="card-badge-dot"></span>法人向け</span>
+      <div class="card-title">LegalBase</div>
+      <div class="card-sub">For Corporations</div>
+      <p class="card-desc">
+        中小企業・スタートアップの法務コストを最適化。契約書レビュー、法律相談、トラブル対応までをサブスクリプションで一元的にサポートします。顧問弁護士を持つのが難しかった企業にも、プロの法務力を。
+      </p>
+      <a href="#" class="card-link">詳しく見る</a>
+    </div>
+
+    <!-- ベンナビcrown (個人) -->
+    <div class="card c-indigo">
+      <span class="card-badge"><span class="card-badge-dot"></span>個人向け</span>
+      <div class="card-title">ベンナビcrown</div>
+      <div class="card-sub">For Individuals</div>
+      <p class="card-desc">
+        日常の法的トラブルに、弁護士への相談をいつでも。交通事故・離婚・労働問題・債務整理など、個人が直面するあらゆる問題に月額定額でアクセスできます。
+      </p>
+      <a href="#" class="card-link">詳しく見る</a>
+    </div>
+
+    <!-- Store (wide) -->
+    <div class="card c-teal card-wide">
+      <div class="card-wide-inner">
+        <div class="card-wide-body">
+          <span class="card-badge"><span class="card-badge-dot"></span>店舗向け</span>
+          <div class="card-title">LegalBase 店舗プラン</div>
+          <div class="card-sub">For Retail &amp; Restaurant</div>
+          <p class="card-desc">
+            実店舗が直面する特有の法務課題に特化したプラン。スタッフとの労務トラブル、顧客クレーム対応、業法・衛生法規への対応まで、業種に合わせたサポートを提供します。
+          </p>
+          <a href="#" class="card-link">詳しく見る</a>
+        </div>
+        <div class="card-wide-aside">
+          <div class="aside-item">
+            <span class="aside-label">Beauty</span>
+            <span class="aside-name">LegalBaseビューティー</span>
+            <p class="aside-desc">美容室・ネイルサロン・エステ向け。施術トラブル・スタッフ契約・予約キャンセル対応をカバー。</p>
+          </div>
+          <div class="aside-item">
+            <span class="aside-label">Gourmet</span>
+            <span class="aside-name">LegalBaseグルメ</span>
+            <p class="aside-desc">飲食店・カフェ・フードビジネス向け。食品表示・フランチャイズ・アルバイト労務問題をカバー。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bonobno (wide) -->
+    <div class="card c-slate card-wide">
+      <div class="card-insurance-inner">
+        <div class="card-wide-body">
+          <span class="card-badge"><span class="card-badge-dot"></span>保険</span>
+          <div class="card-title">bonobno</div>
+          <div class="card-sub">Legal Subscription Insurance</div>
+          <p class="card-desc">
+            万が一のトラブルを保険でカバー。サブスク法務と保険を組み合わせた、新しい形のリーガルプロテクション。日常のリスクに、手頃な保険ソリューションを。
+          </p>
+          <a href="#" class="card-link">詳しく見る</a>
+        </div>
+        <div class="insurance-right">
+          <p class="insurance-note">
+            引受保険会社：<strong>株式会社アシロ少額短期保険</strong><br><br>
+            少額短期保険業者として、お客様の日常の法的リスクに対して、手頃な価格帯の保険ソリューションを提供しています。legal-protect の各サービスと組み合わせることで、予防から補償まで一貫したプロテクションを実現します。
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Vision ── -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="vision-text">
+      <span class="vision-eyebrow">Our Vision</span>
+      <h2 class="vision-headline">
+        法の不安から<br>解放された世界へ
+      </h2>
+      <p class="vision-body">
+        日本では、法的なトラブルに直面したとき「弁護士に相談する」という選択肢が遠く感じられる現状があります。コストの高さ、手続きの複雑さ、そして心理的なハードルが、本来守られるべき人々を守れていない。<br><br>
+        legal-protect は、サブスクリプション型の法務サービスと保険を組み合わせることで、すべての企業と個人が「もしも」に備えられる社会をつくります。
+      </p>
+    </div>
+    <div class="vision-stats">
+      <div class="stat">
+        <div class="stat-label">Coverage</div>
+        <div class="stat-value">法人 / 個人 / 店舗</div>
+        <div class="stat-note">あらゆる立場に対応するサービスライン</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Business Model</div>
+        <div class="stat-value">サブスクリプション</div>
+        <div class="stat-note">月額定額制で、予測可能な法務コストを実現</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Insurance</div>
+        <div class="stat-value">少額短期保険</div>
+        <div class="stat-note">法務 × 保険を組み合わせた新しいプロテクション</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Company</div>
+        <div class="stat-value">ASiRO Inc.</div>
+        <div class="stat-note">legal-protect division が運営</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">ASiRO Inc. — legal-protect</div>
+    <div class="footer-note">
+      引受保険会社：株式会社アシロ少額短期保険<br>
+      ご不明な点はお気軽にお問い合わせください。
+    </div>
+    <div class="footer-copy">Copyright © ASiRO Inc. All rights reserved.</div>
+  </div>
+</footer>
