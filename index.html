@@ -1,12 +1,13 @@
 <title>legal-protect | ASiRO — トラブルのない世界をつくる</title>
 <style>
   :root {
-    --ink:    #0C1828;
+    --ink:    #080F1C;
     --brand:  #1763B0;
-    --teal:   #0E9B94;
+    --teal:   #00B8B2;
     --indigo: #2D8AB5;
     --slate:  #5B7FA6;
-    --ground: #F5F7FA;
+    --amber:  #E87830;
+    --ground: #F4F6FA;
     --mist:   #E0EAF4;
     --rule:   #C8D6E8;
     --body:   #344455;
@@ -29,7 +30,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── Nav ─────────────────────────────────────────── */
+  /* ─── Nav ──────────────────────────────────────── */
   nav {
     position: fixed;
     inset: 0 0 auto 0;
@@ -37,20 +38,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.1rem 3rem;
-    background: rgba(245,247,250,0.88);
-    backdrop-filter: blur(10px);
+    padding: 1rem 3rem;
+    background: rgba(244,246,250,0.92);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--rule);
   }
-
   .nav-brand {
     display: flex;
     flex-direction: column;
     line-height: 1.15;
   }
   .nav-brand .co {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--brand);
     font-weight: 700;
@@ -61,7 +61,6 @@
     color: var(--ink);
     font-weight: 700;
   }
-
   .nav-links {
     display: flex;
     align-items: center;
@@ -69,25 +68,26 @@
     list-style: none;
   }
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--body);
     text-decoration: none;
     letter-spacing: 0.03em;
     transition: color 0.18s;
   }
   .nav-links a:hover { color: var(--brand); }
-
   .nav-cta {
-    background: var(--brand) !important;
+    background: var(--amber) !important;
     color: var(--white) !important;
-    padding: 0.45rem 1.1rem;
-    border-radius: 2px;
+    padding: 0.45rem 1.2rem;
+    border-radius: 999px;
     font-size: 0.78rem !important;
-    letter-spacing: 0.06em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background 0.18s !important;
   }
-  .nav-cta:hover { background: #0F4E8A !important; }
+  .nav-cta:hover { background: #C5631E !important; color: var(--white) !important; }
 
-  /* ─── Hero ────────────────────────────────────────── */
+  /* ─── Hero ─────────────────────────────────────── */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -98,31 +98,29 @@
     max-width: 1280px;
     margin: 0 auto;
   }
-
   .hero-left {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
-
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--brand);
+    color: var(--teal);
     font-weight: 700;
   }
   .eyebrow::before {
     content: "";
     display: block;
     width: 2rem;
-    height: 1px;
-    background: var(--brand);
+    height: 2px;
+    background: var(--teal);
+    border-radius: 1px;
   }
-
   h1 {
     font-family: var(--mincho);
     font-size: clamp(2.6rem, 4.5vw, 4rem);
@@ -136,59 +134,48 @@
     font-style: normal;
     color: var(--brand);
   }
-
   .hero-sub {
     font-size: 0.975rem;
     line-height: 2;
     color: var(--body);
     max-width: 36ch;
-    border-left: 2px solid var(--mist);
+    border-left: 3px solid var(--teal);
     padding-left: 1.2rem;
   }
-
   .hero-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
     color: var(--dim);
   }
 
-  /* ─── Diagram ─────────────────────────────────────── */
+  /* ─── Diagram ──────────────────────────────────── */
   .diagram-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .diagram {
     position: relative;
     width: 440px;
     height: 440px;
     flex-shrink: 0;
   }
-
-  /* Cross lines */
-  .diagram-h,
-  .diagram-v {
-    position: absolute;
-    background: var(--rule);
-    pointer-events: none;
-  }
   .diagram-h {
+    position: absolute;
     width: 100%; height: 1px;
     top: 50%; left: 0;
     transform: translateY(-50%);
-    border-style: dashed;
-    border: none;
     background: repeating-linear-gradient(90deg, var(--rule) 0, var(--rule) 6px, transparent 6px, transparent 12px);
+    pointer-events: none;
   }
   .diagram-v {
+    position: absolute;
     width: 1px; height: 100%;
     left: 50%; top: 0;
     transform: translateX(-50%);
     background: repeating-linear-gradient(180deg, var(--rule) 0, var(--rule) 6px, transparent 6px, transparent 12px);
+    pointer-events: none;
   }
-
-  /* Outer orbit */
   .diagram-ring {
     position: absolute;
     top: 50%; left: 50%;
@@ -196,10 +183,8 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 1px solid var(--rule);
-    background: rgba(224,234,244,0.25);
+    background: rgba(0,184,178,0.04);
   }
-
-  /* Center globe */
   .diagram-center {
     position: absolute;
     top: 50%; left: 50%;
@@ -214,12 +199,12 @@
     color: var(--white);
     text-align: center;
     z-index: 2;
-    box-shadow: 0 10px 40px rgba(23,99,176,0.28);
+    box-shadow: 0 12px 40px rgba(0,184,178,0.25);
   }
   .center-en {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.14em;
-    opacity: 0.82;
+    opacity: 0.8;
     font-weight: 500;
     text-transform: uppercase;
   }
@@ -229,29 +214,27 @@
     font-weight: 700;
     margin-top: 0.2rem;
   }
-
-  /* Nodes */
   .node {
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
     z-index: 3;
   }
+  /* Pill badges on diagram */
   .node-badge {
     font-size: 0.62rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     font-weight: 700;
     color: var(--white);
     background: var(--brand);
-    padding: 0.18rem 0.55rem;
-    border-radius: 2px;
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
   }
-  .node-badge.teal { background: var(--teal); }
+  .node-badge.teal   { background: var(--teal); }
   .node-badge.indigo { background: var(--indigo); }
-  .node-badge.slate { background: var(--slate); }
-
+  .node-badge.slate  { background: var(--slate); }
   .node-name {
     font-family: var(--mincho);
     font-size: 0.88rem;
@@ -260,25 +243,46 @@
     text-align: center;
     line-height: 1.4;
   }
-
-  .node-top    { top: 22px;  left: 50%; transform: translateX(-50%); }
+  .node-top    { top: 22px;   left: 50%; transform: translateX(-50%); }
   .node-bottom { bottom: 22px; left: 50%; transform: translateX(-50%); }
   .node-right  { top: 50%; right: 14px; transform: translateY(-50%); align-items: flex-end; }
   .node-left   { top: 50%; left: 14px;  transform: translateY(-50%); align-items: flex-start; }
 
-  /* ─── Plans ─────────────────────────────────────────── */
+  /* ─── Section header shared ────────────────────── */
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+    padding-left: 1.25rem;
+    border-left: 4px solid var(--teal);
+  }
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .section-title {
+    font-family: var(--mincho);
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    color: var(--ink);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  /* ─── Plans ────────────────────────────────────── */
   .plans {
     padding: 7rem 3rem;
     max-width: 1280px;
     margin: 0 auto;
   }
-
   .plans-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
     align-items: stretch;
-    margin-top: 3rem;
   }
 
   .plan-card {
@@ -288,56 +292,68 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.2s, transform 0.2s;
   }
   .plan-card:hover {
-    box-shadow: 0 6px 32px rgba(23,99,176,0.1);
-    border-color: var(--brand);
+    box-shadow: 0 8px 36px rgba(8,15,28,0.1);
+    transform: translateY(-2px);
   }
 
-  /* Featured card */
+  /* Always-visible left accent bar */
+  .plan-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--brand);
+  }
+  .plan-card.pc-teal::before   { background: var(--teal); }
+  .plan-card.pc-indigo::before { background: var(--indigo); }
+  .plan-card.pc-slate::before  { background: var(--slate); }
+
+  /* Featured: colored header band */
   .plan-card.featured {
     border-color: var(--brand);
-    box-shadow: 0 4px 24px rgba(23,99,176,0.12);
+    box-shadow: 0 4px 28px rgba(23,99,176,0.14);
   }
-  .plan-featured-label {
+  .plan-featured-band {
     background: var(--brand);
     color: var(--white);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    padding: 0.4rem;
+    padding: 0.5rem 1.75rem;
   }
 
   .plan-head {
-    padding: 1.75rem 1.75rem 1.5rem;
+    padding: 1.6rem 1.6rem 1.4rem 2rem;
     border-bottom: 1px solid var(--mist);
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
-  .plan-badge {
+  /* Pill badge */
+  .pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
+    gap: 0;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
     font-weight: 700;
-    color: var(--brand);
+    color: var(--white);
+    background: var(--brand);
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
     text-transform: uppercase;
+    width: fit-content;
   }
-  .plan-badge-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
-  .pb-teal   { color: var(--teal); }
-  .pb-indigo { color: var(--indigo); }
-  .pb-slate  { color: var(--slate); }
+  .pill.teal   { background: var(--teal); }
+  .pill.indigo { background: var(--indigo); }
+  .pill.slate  { background: var(--slate); }
+  .pill.amber  { background: var(--amber); }
 
   .plan-name {
     font-family: var(--mincho);
@@ -347,71 +363,60 @@
     line-height: 1.2;
   }
   .plan-tagline {
-    font-size: 0.78rem;
+    font-size: 0.775rem;
     color: var(--dim);
-    line-height: 1.6;
+    line-height: 1.65;
   }
-
   .plan-price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.3rem;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
   }
   .price-amount {
     font-family: var(--mincho);
-    font-size: 1.85rem;
+    font-size: 1.75rem;
     color: var(--ink);
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     line-height: 1;
   }
-  .price-unit {
-    font-size: 0.75rem;
-    color: var(--dim);
-    letter-spacing: 0.04em;
-  }
+  .plan-card.featured .price-amount { color: var(--brand); }
   .price-note {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--dim);
-    margin-top: 0.3rem;
-    line-height: 1.5;
+    margin-top: 0.35rem;
+    line-height: 1.55;
   }
 
   .plan-features {
-    padding: 1.5rem 1.75rem;
+    padding: 1.4rem 1.6rem 1.4rem 2rem;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .plan-features-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
+    font-size: 0.63rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--dim);
     font-weight: 700;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.85rem;
   }
-
   .feature-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .feature-list li {
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
-    font-size: 0.845rem;
+    gap: 0.6rem;
+    font-size: 0.835rem;
     color: var(--body);
     line-height: 1.55;
-    padding: 0.7rem 0;
+    padding: 0.65rem 0;
     border-bottom: 1px solid var(--mist);
   }
   .feature-list li:last-child { border-bottom: none; }
-  .feature-check {
+  .fcheck {
     flex-shrink: 0;
     width: 16px; height: 16px;
     border-radius: 50%;
@@ -421,27 +426,30 @@
     justify-content: center;
     margin-top: 0.1rem;
   }
-  .feature-check svg { display: block; }
-
-  .plan-card.featured .feature-check { background: rgba(23,99,176,0.12); }
-  .plan-card.featured .feature-check svg path { stroke: var(--brand); }
+  .fcheck svg { display: block; }
+  /* Theme-colored checks */
+  .plan-card.featured  .fcheck { background: rgba(23,99,176,0.12); }
+  .plan-card.pc-teal   .fcheck { background: rgba(0,184,178,0.12); }
+  .plan-card.pc-indigo .fcheck { background: rgba(45,138,181,0.12); }
+  .plan-card.pc-slate  .fcheck { background: rgba(91,127,166,0.12); }
 
   .plan-cta {
-    padding: 1.5rem 1.75rem;
+    padding: 1.25rem 1.6rem 1.5rem 2rem;
     border-top: 1px solid var(--mist);
   }
   .plan-btn {
     display: block;
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.72rem;
     text-align: center;
     font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-decoration: none;
     border: 1.5px solid var(--rule);
     color: var(--body);
     background: transparent;
+    border-radius: 3px;
     transition: background 0.18s, border-color 0.18s, color 0.18s;
     cursor: pointer;
   }
@@ -450,78 +458,39 @@
     color: var(--brand);
     background: rgba(23,99,176,0.04);
   }
-  .plan-btn:focus-visible {
-    outline: 2px solid var(--brand);
-    outline-offset: 2px;
-  }
+  .plan-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
   .plan-btn.btn-primary {
-    background: var(--brand);
-    border-color: var(--brand);
+    background: var(--amber);
+    border-color: var(--amber);
     color: var(--white);
+    border-radius: 3px;
   }
   .plan-btn.btn-primary:hover {
-    background: #0F4E8A;
-    border-color: #0F4E8A;
+    background: #C5631E;
+    border-color: #C5631E;
     color: var(--white);
   }
 
-  @media (max-width: 1100px) {
-    .plans-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .plans-grid { grid-template-columns: 1fr; }
-    .plans { padding: 4.5rem 1.5rem; }
-  }
-
-  /* ─── Products ────────────────────────────────────── */
+  /* ─── Products ─────────────────────────────────── */
   .products {
+    background: var(--white);
     padding: 7rem 3rem;
+  }
+  .products-inner {
     max-width: 1280px;
     margin: 0 auto;
   }
-
-  .section-head {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    margin-bottom: 3rem;
-  }
-  .section-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--brand);
-    font-weight: 700;
-  }
-  .section-eyebrow::before {
-    content: "";
-    display: block;
-    width: 1.5rem;
-    height: 1px;
-    background: var(--brand);
-  }
-  .section-title {
-    font-family: var(--mincho);
-    font-size: clamp(1.6rem, 2.5vw, 2rem);
-    color: var(--ink);
-    font-weight: 700;
-    text-wrap: balance;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
 
-  /* ─── Cards ───────────────────────────────────────── */
+  /* ─── Cards ─────────────────────────────────────── */
   .card {
-    background: var(--white);
+    background: var(--ground);
     border: 1px solid var(--rule);
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 2.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
@@ -529,49 +498,42 @@
     overflow: hidden;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .card::after {
+  /* Always-visible left accent bar */
+  .card::before {
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
-    width: 3px;
+    width: 4px;
     background: var(--brand);
-    opacity: 0;
-    transition: opacity 0.2s;
   }
   .card:hover {
     border-color: var(--brand);
     box-shadow: 0 4px 24px rgba(23,99,176,0.08);
   }
-  .card:hover::after { opacity: 1; }
+  .card.c-teal::before   { background: var(--teal); }
+  .card.c-teal:hover     { border-color: var(--teal); box-shadow: 0 4px 24px rgba(0,184,178,0.1); }
+  .card.c-indigo::before { background: var(--indigo); }
+  .card.c-indigo:hover   { border-color: var(--indigo); }
+  .card.c-slate::before  { background: var(--slate); }
+  .card.c-slate:hover    { border-color: var(--slate); }
 
-  .card.c-teal:hover { border-color: var(--teal); box-shadow: 0 4px 24px rgba(14,155,148,0.08); }
-  .card.c-teal::after { background: var(--teal); }
-
-  .card.c-indigo:hover { border-color: var(--indigo); }
-  .card.c-indigo::after { background: var(--indigo); }
-
-  .card.c-slate:hover { border-color: var(--slate); box-shadow: 0 4px 24px rgba(91,127,166,0.08); }
-  .card.c-slate::after { background: var(--slate); }
-
+  /* Card badge = pill */
   .card-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
     font-weight: 700;
-    color: var(--brand);
+    color: var(--white);
+    background: var(--brand);
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
     text-transform: uppercase;
+    width: fit-content;
   }
-  .card-badge-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
-  .c-teal  .card-badge { color: var(--teal); }
-  .c-indigo .card-badge { color: var(--indigo); }
-  .c-slate .card-badge { color: var(--slate); }
+  .c-teal   .card-badge { background: var(--teal); }
+  .c-indigo .card-badge { background: var(--indigo); }
+  .c-slate  .card-badge { background: var(--slate); }
 
   .card-title {
     font-family: var(--mincho);
@@ -581,7 +543,7 @@
     line-height: 1.2;
   }
   .card-sub {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     color: var(--dim);
     letter-spacing: 0.04em;
     margin-top: -0.4rem;
@@ -590,7 +552,7 @@
     font-size: 0.875rem;
     line-height: 1.85;
     color: var(--body);
-    border-top: 1px solid var(--mist);
+    border-top: 1px solid var(--rule);
     padding-top: 1rem;
     margin-top: 0.15rem;
   }
@@ -608,44 +570,37 @@
   }
   .card-link:hover { gap: 0.6rem; }
   .card-link::after { content: "→"; }
-  .c-teal  .card-link { color: var(--teal); }
+  .c-teal   .card-link { color: var(--teal); }
   .c-indigo .card-link { color: var(--indigo); }
-  .c-slate .card-link { color: var(--slate); }
+  .c-slate  .card-link { color: var(--slate); }
 
-  /* Wide 2-col card */
-  .card-wide {
-    grid-column: span 2;
-  }
+  .card-wide { grid-column: span 2; }
   .card-wide-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     align-items: start;
   }
-  .card-wide-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
+  .card-wide-body { display: flex; flex-direction: column; gap: 0.85rem; }
   .card-wide-aside {
-    border-left: 1px solid var(--mist);
+    border-left: 1px solid var(--rule);
     padding-left: 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.25rem;
     padding-top: 0.25rem;
   }
   .aside-item {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid var(--mist);
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule);
   }
   .aside-item:last-child { border-bottom: none; padding-bottom: 0; }
   .aside-label {
-    font-size: 0.67rem;
-    letter-spacing: 0.15em;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--teal);
     font-weight: 700;
@@ -657,12 +612,10 @@
     font-weight: 700;
   }
   .aside-desc {
-    font-size: 0.825rem;
+    font-size: 0.82rem;
     color: var(--body);
     line-height: 1.75;
   }
-
-  /* bonobno - insurance row */
   .card-insurance-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -670,21 +623,20 @@
     align-items: center;
   }
   .insurance-right {
-    border-left: 1px solid var(--mist);
+    border-left: 1px solid var(--rule);
     padding-left: 2.5rem;
   }
   .insurance-note {
-    font-size: 0.825rem;
+    font-size: 0.82rem;
     color: var(--dim);
-    line-height: 1.85;
+    line-height: 1.9;
   }
   .insurance-note strong { color: var(--body); }
 
-  /* ─── Vision ──────────────────────────────────────── */
+  /* ─── Vision ────────────────────────────────────── */
   .vision {
     background: var(--ink);
     padding: 7rem 3rem;
-    margin-top: 3rem;
   }
   .vision-inner {
     max-width: 1280px;
@@ -694,7 +646,6 @@
     gap: 7rem;
     align-items: center;
   }
-
   .vision-text {
     display: flex;
     flex-direction: column;
@@ -704,8 +655,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
+    font-size: 0.66rem;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--teal);
     font-weight: 700;
@@ -714,12 +665,13 @@
     content: "";
     display: block;
     width: 1.5rem;
-    height: 1px;
+    height: 2px;
     background: var(--teal);
+    border-radius: 1px;
   }
   .vision-headline {
     font-family: var(--mincho);
-    font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
     color: var(--white);
     line-height: 1.45;
     font-weight: 700;
@@ -727,26 +679,21 @@
   }
   .vision-body {
     font-size: 0.9rem;
-    line-height: 2.05;
-    color: #8BA0B8;
+    line-height: 2.1;
+    color: #7A95B0;
   }
-
-  .vision-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .vision-stats { display: flex; flex-direction: column; }
   .stat {
-    padding: 1.75rem 0;
+    padding: 1.65rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.07);
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
   .stat:first-child { padding-top: 0; }
   .stat:last-child { border-bottom: none; }
   .stat-label {
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--slate);
@@ -754,20 +701,20 @@
   }
   .stat-value {
     font-family: var(--mincho);
-    font-size: 1.55rem;
-    color: var(--white);
+    font-size: 1.5rem;
+    color: var(--teal);
     font-weight: 700;
     line-height: 1.1;
   }
   .stat-note {
-    font-size: 0.78rem;
-    color: #5B7FA6;
+    font-size: 0.775rem;
+    color: #4E6A86;
     line-height: 1.6;
   }
 
-  /* ─── Footer ──────────────────────────────────────── */
+  /* ─── Footer ─────────────────────────────────────── */
   footer {
-    background: #060F1A;
+    background: #040A12;
     padding: 2.25rem 3rem;
     border-top: 1px solid rgba(255,255,255,0.04);
   }
@@ -782,61 +729,46 @@
   }
   .footer-brand {
     font-family: var(--mincho);
-    color: rgba(255,255,255,0.45);
-    font-size: 0.9rem;
+    color: rgba(255,255,255,0.42);
+    font-size: 0.875rem;
     letter-spacing: 0.04em;
   }
   .footer-note {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.28);
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.26);
     line-height: 1.8;
     text-align: center;
   }
   .footer-copy {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.18);
   }
 
   /* ─── Responsive ──────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .plans-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 920px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 6rem 1.5rem 3rem;
-      min-height: auto;
-      gap: 2.5rem;
-    }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; min-height: auto; gap: 2.5rem; }
     .diagram-wrap { display: none; }
-
+    .plans { padding: 4.5rem 1.5rem; }
+    .plans-grid { grid-template-columns: 1fr; }
     .products { padding: 4.5rem 1.5rem; }
     .grid { grid-template-columns: 1fr; }
     .card-wide { grid-column: span 1; }
     .card-wide-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-    .card-wide-aside {
-      border-left: none;
-      border-top: 1px solid var(--mist);
-      padding-left: 0;
-      padding-top: 1.5rem;
-    }
+    .card-wide-aside { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 1.5rem; }
     .card-insurance-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-    .insurance-right {
-      border-left: none;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding-left: 0;
-      padding-top: 1.5rem;
-    }
-
+    .insurance-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 1.5rem; }
     .vision { padding: 4.5rem 1.5rem; }
     .vision-inner { grid-template-columns: 1fr; gap: 3rem; }
-
     footer { padding: 2rem 1.5rem; }
     .footer-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .footer-note { text-align: left; }
   }
-
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; }
   }
@@ -849,8 +781,8 @@
     <span class="prod">legal-protect</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#products">サービス</a></li>
     <li><a href="#plans">プラン</a></li>
+    <li><a href="#products">サービス</a></li>
     <li><a href="#vision">ビジョン</a></li>
     <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
   </ul>
@@ -880,7 +812,6 @@
         <span class="center-en">Trouble-free</span>
         <span class="center-ja">World</span>
       </div>
-
       <div class="node node-top">
         <span class="node-badge">法人向け</span>
         <span class="node-name">LegalBase</span>
@@ -904,7 +835,7 @@
 <!-- ── Plans ── -->
 <section class="plans" id="plans">
   <div class="section-head">
-    <span class="section-eyebrow">Pricing Plans</span>
+    <div class="section-eyebrow">Pricing Plans</div>
     <h2 class="section-title">サービスプラン一覧</h2>
   </div>
 
@@ -912,39 +843,24 @@
 
     <!-- LegalBase 法人 -->
     <div class="plan-card featured">
-      <div class="plan-featured-label">Most Popular</div>
+      <div class="plan-featured-band">Most Popular</div>
       <div class="plan-head">
-        <span class="plan-badge"><span class="plan-badge-dot"></span>法人向け</span>
+        <span class="pill">法人向け</span>
         <div class="plan-name">LegalBase</div>
         <p class="plan-tagline">中小企業・スタートアップのための法人向けサブスク法務</p>
         <div class="plan-price">
-          <span class="price-amount">要相談</span>
+          <div class="price-amount">要相談</div>
+          <div class="price-note">月額プラン／規模・利用頻度に応じてご提案</div>
         </div>
-        <p class="price-note">月額プラン／規模・利用頻度に応じてご提案</p>
       </div>
       <div class="plan-features">
         <div class="plan-features-label">含まれるサービス</div>
         <ul class="feature-list">
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            契約書レビュー（月〇件まで）
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            法律相談（月〇回・電話・チャット）
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            取引先とのトラブル対応
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            就業規則・社内規程の整備サポート
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            専属担当弁護士のアサイン
-          </li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#1763B0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>契約書レビュー（月〇件まで）</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#1763B0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>法律相談（月〇回・電話・チャット）</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#1763B0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>取引先とのトラブル対応</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#1763B0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>就業規則・社内規程の整備サポート</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#1763B0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>専属担当弁護士のアサイン</li>
         </ul>
       </div>
       <div class="plan-cta">
@@ -953,39 +869,24 @@
     </div>
 
     <!-- ベンナビcrown 個人 -->
-    <div class="plan-card">
+    <div class="plan-card pc-indigo">
       <div class="plan-head">
-        <span class="plan-badge pb-indigo"><span class="plan-badge-dot"></span>個人向け</span>
+        <span class="pill indigo">個人向け</span>
         <div class="plan-name">ベンナビcrown</div>
         <p class="plan-tagline">日常のトラブルに、弁護士相談をサブスクで</p>
         <div class="plan-price">
-          <span class="price-amount">要相談</span>
+          <div class="price-amount">要相談</div>
+          <div class="price-note">月額プラン／ライト・スタンダードを選択</div>
         </div>
-        <p class="price-note">月額プラン／ライト・スタンダードを選択</p>
       </div>
       <div class="plan-features">
         <div class="plan-features-label">含まれるサービス</div>
         <ul class="feature-list">
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            弁護士への法律相談（月〇回）
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            交通事故・離婚・労働問題対応
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            債務整理・借金問題への対応
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            内容証明・書類作成サポート
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            チャット・電話でいつでも相談
-          </li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#2D8AB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>弁護士への法律相談（月〇回）</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#2D8AB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>交通事故・離婚・労働問題対応</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#2D8AB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>債務整理・借金問題への対応</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#2D8AB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>内容証明・書類作成サポート</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#2D8AB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>チャット・電話でいつでも相談</li>
         </ul>
       </div>
       <div class="plan-cta">
@@ -994,39 +895,24 @@
     </div>
 
     <!-- 店舗向け -->
-    <div class="plan-card">
+    <div class="plan-card pc-teal">
       <div class="plan-head">
-        <span class="plan-badge pb-teal"><span class="plan-badge-dot"></span>店舗向け</span>
+        <span class="pill teal">店舗向け</span>
         <div class="plan-name">LegalBase<br>店舗プラン</div>
         <p class="plan-tagline">美容室・飲食店など実店舗のための業種特化プラン</p>
         <div class="plan-price">
-          <span class="price-amount">要相談</span>
+          <div class="price-amount">要相談</div>
+          <div class="price-note">業種・店舗規模に応じてご提案</div>
         </div>
-        <p class="price-note">業種・店舗規模に応じてご提案</p>
       </div>
       <div class="plan-features">
         <div class="plan-features-label">含まれるサービス</div>
         <ul class="feature-list">
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            業種別・業法コンプライアンス対応
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            スタッフ労務・雇用契約サポート
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            顧客クレーム・施術トラブル対応
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            利用規約・同意書のひな型提供
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            ビューティー／グルメ 両プラン対応
-          </li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#00B8B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>業種別・業法コンプライアンス対応</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#00B8B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>スタッフ労務・雇用契約サポート</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#00B8B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>顧客クレーム・施術トラブル対応</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#00B8B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>利用規約・同意書のひな型提供</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#00B8B2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ビューティー／グルメ 両プラン対応</li>
         </ul>
       </div>
       <div class="plan-cta">
@@ -1035,39 +921,24 @@
     </div>
 
     <!-- bonobno 保険 -->
-    <div class="plan-card">
+    <div class="plan-card pc-slate">
       <div class="plan-head">
-        <span class="plan-badge pb-slate"><span class="plan-badge-dot"></span>保険</span>
+        <span class="pill slate">保険</span>
         <div class="plan-name">bonobno</div>
         <p class="plan-tagline">法務サブスクと組み合わせる少額短期保険</p>
         <div class="plan-price">
-          <span class="price-amount">要相談</span>
+          <div class="price-amount">要相談</div>
+          <div class="price-note">引受：株式会社アシロ少額短期保険</div>
         </div>
-        <p class="price-note">引受：株式会社アシロ少額短期保険</p>
       </div>
       <div class="plan-features">
         <div class="plan-features-label">含まれるサービス</div>
         <ul class="feature-list">
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            法的トラブル時の弁護士費用補償
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            示談交渉費用のカバー
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            裁判費用サポート
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            各LegalBaseプランとのセット割
-          </li>
-          <li>
-            <span class="feature-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            少額短期保険ならではの手頃な保険料
-          </li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>法的トラブル時の弁護士費用補償</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>示談交渉費用のカバー</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>裁判費用サポート</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>各LegalBaseプランとのセット割</li>
+          <li><span class="fcheck"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#5B7FA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>少額短期保険ならではの手頃な保険料</li>
         </ul>
       </div>
       <div class="plan-cta">
@@ -1080,83 +951,73 @@
 
 <!-- ── Products ── -->
 <section class="products" id="products">
-  <div class="section-head">
-    <span class="section-eyebrow">Our Services</span>
-    <h2 class="section-title">サブスクで、法務をもっと身近に</h2>
-  </div>
-
-  <div class="grid">
-
-    <!-- LegalBase (法人) -->
-    <div class="card">
-      <span class="card-badge"><span class="card-badge-dot"></span>法人向け</span>
-      <div class="card-title">LegalBase</div>
-      <div class="card-sub">For Corporations</div>
-      <p class="card-desc">
-        中小企業・スタートアップの法務コストを最適化。契約書レビュー、法律相談、トラブル対応までをサブスクリプションで一元的にサポートします。顧問弁護士を持つのが難しかった企業にも、プロの法務力を。
-      </p>
-      <a href="#" class="card-link">詳しく見る</a>
+  <div class="products-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Our Services</div>
+      <h2 class="section-title">サブスクで、法務をもっと身近に</h2>
     </div>
 
-    <!-- ベンナビcrown (個人) -->
-    <div class="card c-indigo">
-      <span class="card-badge"><span class="card-badge-dot"></span>個人向け</span>
-      <div class="card-title">ベンナビcrown</div>
-      <div class="card-sub">For Individuals</div>
-      <p class="card-desc">
-        日常の法的トラブルに、弁護士への相談をいつでも。交通事故・離婚・労働問題・債務整理など、個人が直面するあらゆる問題に月額定額でアクセスできます。
-      </p>
-      <a href="#" class="card-link">詳しく見る</a>
-    </div>
+    <div class="grid">
 
-    <!-- Store (wide) -->
-    <div class="card c-teal card-wide">
-      <div class="card-wide-inner">
-        <div class="card-wide-body">
-          <span class="card-badge"><span class="card-badge-dot"></span>店舗向け</span>
-          <div class="card-title">LegalBase 店舗プラン</div>
-          <div class="card-sub">For Retail &amp; Restaurant</div>
-          <p class="card-desc">
-            実店舗が直面する特有の法務課題に特化したプラン。スタッフとの労務トラブル、顧客クレーム対応、業法・衛生法規への対応まで、業種に合わせたサポートを提供します。
-          </p>
-          <a href="#" class="card-link">詳しく見る</a>
-        </div>
-        <div class="card-wide-aside">
-          <div class="aside-item">
-            <span class="aside-label">Beauty</span>
-            <span class="aside-name">LegalBaseビューティー</span>
-            <p class="aside-desc">美容室・ネイルサロン・エステ向け。施術トラブル・スタッフ契約・予約キャンセル対応をカバー。</p>
+      <div class="card">
+        <span class="card-badge">法人向け</span>
+        <div class="card-title">LegalBase</div>
+        <div class="card-sub">For Corporations</div>
+        <p class="card-desc">中小企業・スタートアップの法務コストを最適化。契約書レビュー、法律相談、トラブル対応までをサブスクリプションで一元的にサポートします。顧問弁護士を持つのが難しかった企業にも、プロの法務力を。</p>
+        <a href="#" class="card-link">詳しく見る</a>
+      </div>
+
+      <div class="card c-indigo">
+        <span class="card-badge">個人向け</span>
+        <div class="card-title">ベンナビcrown</div>
+        <div class="card-sub">For Individuals</div>
+        <p class="card-desc">日常の法的トラブルに、弁護士への相談をいつでも。交通事故・離婚・労働問題・債務整理など、個人が直面するあらゆる問題に月額定額でアクセスできます。</p>
+        <a href="#" class="card-link">詳しく見る</a>
+      </div>
+
+      <div class="card c-teal card-wide">
+        <div class="card-wide-inner">
+          <div class="card-wide-body">
+            <span class="card-badge">店舗向け</span>
+            <div class="card-title">LegalBase 店舗プラン</div>
+            <div class="card-sub">For Retail &amp; Restaurant</div>
+            <p class="card-desc">実店舗が直面する特有の法務課題に特化したプラン。スタッフとの労務トラブル、顧客クレーム対応、業法・衛生法規への対応まで、業種に合わせたサポートを提供します。</p>
+            <a href="#" class="card-link">詳しく見る</a>
           </div>
-          <div class="aside-item">
-            <span class="aside-label">Gourmet</span>
-            <span class="aside-name">LegalBaseグルメ</span>
-            <p class="aside-desc">飲食店・カフェ・フードビジネス向け。食品表示・フランチャイズ・アルバイト労務問題をカバー。</p>
+          <div class="card-wide-aside">
+            <div class="aside-item">
+              <span class="aside-label">Beauty</span>
+              <span class="aside-name">LegalBaseビューティー</span>
+              <p class="aside-desc">美容室・ネイルサロン・エステ向け。施術トラブル・スタッフ契約・予約キャンセル対応をカバー。</p>
+            </div>
+            <div class="aside-item">
+              <span class="aside-label">Gourmet</span>
+              <span class="aside-name">LegalBaseグルメ</span>
+              <p class="aside-desc">飲食店・カフェ・フードビジネス向け。食品表示・フランチャイズ・アルバイト労務問題をカバー。</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- bonobno (wide) -->
-    <div class="card c-slate card-wide">
-      <div class="card-insurance-inner">
-        <div class="card-wide-body">
-          <span class="card-badge"><span class="card-badge-dot"></span>保険</span>
-          <div class="card-title">bonobno</div>
-          <div class="card-sub">Legal Subscription Insurance</div>
-          <p class="card-desc">
-            万が一のトラブルを保険でカバー。サブスク法務と保険を組み合わせた、新しい形のリーガルプロテクション。日常のリスクに、手頃な保険ソリューションを。
-          </p>
-          <a href="#" class="card-link">詳しく見る</a>
-        </div>
-        <div class="insurance-right">
-          <p class="insurance-note">
-            引受保険会社：<strong>株式会社アシロ少額短期保険</strong><br><br>
-            少額短期保険業者として、お客様の日常の法的リスクに対して、手頃な価格帯の保険ソリューションを提供しています。legal-protect の各サービスと組み合わせることで、予防から補償まで一貫したプロテクションを実現します。
-          </p>
+      <div class="card c-slate card-wide">
+        <div class="card-insurance-inner">
+          <div class="card-wide-body">
+            <span class="card-badge">保険</span>
+            <div class="card-title">bonobno</div>
+            <div class="card-sub">Legal Subscription Insurance</div>
+            <p class="card-desc">万が一のトラブルを保険でカバー。サブスク法務と保険を組み合わせた、新しい形のリーガルプロテクション。日常のリスクに、手頃な保険ソリューションを。</p>
+            <a href="#" class="card-link">詳しく見る</a>
+          </div>
+          <div class="insurance-right">
+            <p class="insurance-note">
+              引受保険会社：<strong>株式会社アシロ少額短期保険</strong><br><br>
+              少額短期保険業者として、お客様の日常の法的リスクに対して、手頃な価格帯の保険ソリューションを提供しています。legal-protect の各サービスと組み合わせることで、予防から補償まで一貫したプロテクションを実現します。
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
@@ -1165,9 +1026,7 @@
   <div class="vision-inner">
     <div class="vision-text">
       <span class="vision-eyebrow">Our Vision</span>
-      <h2 class="vision-headline">
-        法の不安から<br>解放された世界へ
-      </h2>
+      <h2 class="vision-headline">法の不安から<br>解放された世界へ</h2>
       <p class="vision-body">
         日本では、法的なトラブルに直面したとき「弁護士に相談する」という選択肢が遠く感じられる現状があります。コストの高さ、手続きの複雑さ、そして心理的なハードルが、本来守られるべき人々を守れていない。<br><br>
         legal-protect は、サブスクリプション型の法務サービスと保険を組み合わせることで、すべての企業と個人が「もしも」に備えられる社会をつくります。
