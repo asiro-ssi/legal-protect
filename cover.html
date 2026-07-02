@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>事業紹介資料 | ASiRO — legal-protect</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --navy-deep:  #0E2A55;
+    --navy:       #1B4B8F;
+    --blue:       #2C7FC9;
+    --cyan:       #35B8D9;
+    --ink:        #0B1220;
+    --dim:        #6B7A8D;
+    --rule:       #1B4B8F;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #cfd6de;
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 2vw;
+  }
+
+  /* ─── Slide canvas (16:9) ─────────────────────── */
+  .slide {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    aspect-ratio: 16 / 9;
+    background: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+
+  /* ─── Diagonal gradient shape (bottom-right) ──── */
+  .diagonal-bg {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(100% 33%, 100% 100%, 38% 100%);
+    background: linear-gradient(120deg, #3FC2DE 0%, #2C86C9 38%, #1D4E92 68%, #10275A 100%);
+  }
+
+  /* ─── Corner badge ─────────────────────────────── */
+  .badge {
+    position: absolute;
+    top: 6.5%;
+    right: 3.2%;
+    padding: 0.55em 1.4em;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    font-size: clamp(0.7rem, 1.15vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    background: #fff;
+    z-index: 5;
+  }
+
+  /* ─── Brand block ──────────────────────────────── */
+  .brand {
+    position: absolute;
+    left: 15.5%;
+    top: 44%;
+    transform: translateY(-30%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9em;
+    z-index: 5;
+  }
+
+  .logo-asiro { width: clamp(150px, 15vw, 230px); height: auto; display: block; }
+  .logo-asiro path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .brand-sub {
+    font-family: var(--gothic, "Hiragino Kaku Gothic ProN"), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.6vw, 1.4rem);
+    letter-spacing: 0.03em;
+    color: #5B6774;
+  }
+
+  /* ─── Watermark "Re: ASiRO" across the diagonal ── */
+  .watermark {
+    position: absolute;
+    left: 34%;
+    top: 60%;
+    transform: rotate(-20deg);
+    transform-origin: left center;
+    z-index: 4;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .wm-text {
+    position: absolute;
+    left: 0; top: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(2.1rem, 6.2vw, 5.4rem);
+  }
+  .wm-shadow {
+    color: rgba(150,163,177,0.4);
+    transform: translate(-0.05em, -0.16em);
+  }
+  .wm-main {
+    background: linear-gradient(90deg, #4478A8 0%, #4FA9CE 55%, #EAF7FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* the little double-bar accent under the watermark */
+  .wm-accent {
+    position: absolute;
+    left: 0.08em;
+    top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.16em;
+  }
+  .wm-accent span {
+    display: block;
+    width: 4.6em;
+    height: 0.11em;
+    background: rgba(150,163,177,0.55);
+  }
+  .wm-accent span:last-child {
+    background: linear-gradient(90deg, #4FA9CE, #EAF7FF);
+    width: 5.2em;
+  }
+
+  @media (max-width: 640px) {
+    .badge { top: 4%; right: 4%; padding: 0.45em 1em; }
+    .brand { left: 8%; top: 40%; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="slide">
+    <div class="diagonal-bg"></div>
+
+    <div class="badge">事業紹介資料</div>
+
+    <div class="brand">
+      <svg class="logo-asiro" viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg" aria-label="ASiRO">
+        <path d="M14 66 L52 16 L70 66 M26 50 L64 50" />
+        <path d="M84 24 C 100 14, 122 14, 118 30 C 114 46, 82 40, 84 58 C 86 74, 112 72, 124 60" />
+        <path d="M142 30 L138 66" />
+        <circle cx="141" cy="16" r="5" fill="var(--ink)" stroke="none"/>
+        <path d="M158 66 L162 22 C 190 18, 206 26, 200 40 C 196 50, 178 50, 172 46 L 202 66" />
+        <path d="M222 26 C 246 12, 276 20, 274 44 C 272 66, 240 72, 224 56 C 210 42, 224 24, 246 24" />
+      </svg>
+      <div class="brand-sub">legal-protect</div>
+    </div>
+
+    <div class="watermark">
+      <span class="wm-text wm-shadow">Re: ASiRO</span>
+      <span class="wm-text wm-main">Re: ASiRO</span>
+      <div class="wm-accent"><span></span><span></span></div>
+    </div>
+  </div>
+
+</body>
+</html>
